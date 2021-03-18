@@ -1,0 +1,15 @@
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\bin\Debug\CRUD_Linq.exe.config
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\bin\Debug\CRUD_Linq.exe
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\bin\Debug\CRUD_Linq.pdb
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.csprojAssemblyReference.cache
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\MainWindow.g.cs
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\App.g.cs
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq_MarkupCompile.cache
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq_MarkupCompile.lref
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\MainWindow.baml
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.g.resources
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.Properties.Resources.resources
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.csproj.GenerateResource.cache
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.csproj.CoreCompileInputs.cache
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.exe
+X:\Curso C#\PildorasInfoWPF\CRUD_Linq\obj\Debug\CRUD_Linq.pdb
