@@ -35,7 +35,10 @@ namespace CRUD_Linq
             //InsertarEmpresa();
             //InsertEmpleados();
             //InsertarCargos();
-            InsertarEmpleadoCargo();
+            //InsertarEmpleadoCargo();
+
+            //ActualizaEmpleado();
+            DeleteEmpleado();
         }
 
         public void InsertarEmpresa()
@@ -156,6 +159,28 @@ namespace CRUD_Linq
             dataConext.SubmitChanges();
 
             Principal.ItemsSource = dataConext.Cargo;
+        }
+
+        public void ActualizaEmpleado()
+        {
+            Empleado maria = dataConext.Empleado.First(em => em.Nombre.Equals("Maria"));
+            maria.Nombre = "Maria Angeles";
+
+            dataConext.SubmitChanges();
+
+            Principal.ItemsSource = dataConext.Empleado;
+
+        }
+
+        public void DeleteEmpleado()
+        {
+            Empleado juan = dataConext.Empleado.First(em => em.Nombre.Equals("Juan"));
+            dataConext.Empleado.DeleteOnSubmit(juan);
+
+            dataConext.SubmitChanges();
+
+            Principal.ItemsSource = dataConext.Empleado;
+
         }
     }
 }
