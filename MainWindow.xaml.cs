@@ -78,7 +78,8 @@ namespace CRUD_Linq
 
         public void InsertarEmpleadoCargo()
         {
-            Empleado Juan = dataConext.Empleado.First(em => em.Nombre.Equals("Juan"));
+            // Forma 1 de Agregar los cargos de manera individual sin conocer los ID
+            /*Empleado Juan = dataConext.Empleado.First(em => em.Nombre.Equals("Juan"));
             Empleado Ana = dataConext.Empleado.First(em => em.Nombre.Equals("Ana"));
 
             Cargo cAdminstrador = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Administrador"));
@@ -90,10 +91,54 @@ namespace CRUD_Linq
 
             CargoEmpleado cargoAna = new CargoEmpleado();
             cargoAna.CargoId = cContador.Id;
-            cargoAna.Empleado = Ana;
+            cargoAna.Empleado = Ana;*/
 
-           // dataConext.CargoEmpleado.InsertOnSubmit(cargoJuan);
-           // dataConext.CargoEmpleado.InsertOnSubmit(cargoAna);
+            // Forma de 2, conciendo o son pocos los Id a tratar
+            /*
+            List<CargoEmpleado> listaCargoEmpleados = new List<CargoEmpleado>();
+
+            listaCargoEmpleados.Add(new CargoEmpleado { CargoId = 1, EmpleadoId = 3});
+            listaCargoEmpleados.Add(new CargoEmpleado { CargoId = 2, EmpleadoId = 4});
+            */
+
+            //Forma 3, sin conocer los Id y usando listas
+            /*
+            Empleado Ana = dataConext.Empleado.First(em => em.Nombre.Equals("Ana"));
+            Empleado Maria = dataConext.Empleado.First(em => em.Nombre.Equals("Maria"));
+            Empleado Antonio = dataConext.Empleado.First(em => em.Nombre.Equals("Antonio"));
+
+            Cargo cAdminstrador = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Administrador"));
+            Cargo cContador = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Contador"));
+
+            List<CargoEmpleado> listaCargoEmpleados = new List<CargoEmpleado>();
+
+            listaCargoEmpleados.Add(new CargoEmpleado { Empleado = Ana, Cargo= cContador});
+            listaCargoEmpleados.Add(new CargoEmpleado { Empleado = Maria, Cargo = cAdminstrador});
+            listaCargoEmpleados.Add(new CargoEmpleado { Empleado = Antonio, Cargo = cContador});
+
+            dataConext.CargoEmpleado.InsertAllOnSubmit(listaCargoEmpleados);
+            */
+            // Forma 4, sin conocer los Id y usando listas pero sin instanciar los objetos
+            List<CargoEmpleado> listaCargoEmpleados = new List<CargoEmpleado>();
+
+            listaCargoEmpleados.Add(new CargoEmpleado { Empleado = dataConext.Empleado.First(em => em.Nombre.Equals("Ana")),
+                Cargo = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Contador"))});
+            listaCargoEmpleados.Add(new CargoEmpleado
+            {
+                Empleado = dataConext.Empleado.First(em => em.Nombre.Equals("Maria")),
+                Cargo = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Administrador"))
+            });
+            listaCargoEmpleados.Add(new CargoEmpleado
+            {
+                Empleado = dataConext.Empleado.First(em => em.Nombre.Equals("Antonio")),
+                Cargo = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Contador"))
+            });
+
+
+            dataConext.CargoEmpleado.InsertAllOnSubmit(listaCargoEmpleados);
+
+            // dataConext.CargoEmpleado.InsertOnSubmit(cargoJuan);
+            // dataConext.CargoEmpleado.InsertOnSubmit(cargoAna);
             dataConext.SubmitChanges();
 
             Principal.ItemsSource = dataConext.CargoEmpleado;
