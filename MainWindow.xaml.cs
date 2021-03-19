@@ -32,9 +32,10 @@ namespace CRUD_Linq
             //Crear la conexion con el datacontent
             dataConext = new DataClasses1DataContext(miConexion);
 
-            InsertarEmpresa();
-            InsertEmpleados();
-
+            //InsertarEmpresa();
+            //InsertEmpleados();
+            //InsertarCargos();
+            InsertarEmpleadoCargo();
         }
 
         public void InsertarEmpresa()
@@ -73,8 +74,43 @@ namespace CRUD_Linq
             dataConext.SubmitChanges();
 
             Principal.ItemsSource = dataConext.Empleado;
+        }
 
+        public void InsertarEmpleadoCargo()
+        {
+            Empleado Juan = dataConext.Empleado.First(em => em.Nombre.Equals("Juan"));
+            Empleado Ana = dataConext.Empleado.First(em => em.Nombre.Equals("Ana"));
 
+            Cargo cAdminstrador = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Administrador"));
+            Cargo cContador = dataConext.Cargo.First(cg => cg.NombreCargo.Equals("Contador"));
+
+            CargoEmpleado cargoJuan = new CargoEmpleado();
+            cargoJuan.CargoId = cAdminstrador.Id;
+            cargoJuan.Empleado = Juan;
+
+            CargoEmpleado cargoAna = new CargoEmpleado();
+            cargoAna.CargoId = cContador.Id;
+            cargoAna.Empleado = Ana;
+
+           // dataConext.CargoEmpleado.InsertOnSubmit(cargoJuan);
+           // dataConext.CargoEmpleado.InsertOnSubmit(cargoAna);
+            dataConext.SubmitChanges();
+
+            Principal.ItemsSource = dataConext.CargoEmpleado;
+
+        }
+        public void InsertarCargos()
+        {
+            
+            List<Cargo> listaCargos = new List<Cargo>();
+
+            listaCargos.Add(new Cargo { NombreCargo= "Administrador"});
+            listaCargos.Add(new Cargo { NombreCargo = "Contador" });
+
+            dataConext.Cargo.InsertAllOnSubmit(listaCargos);
+            dataConext.SubmitChanges();
+
+            Principal.ItemsSource = dataConext.Cargo;
         }
     }
 }
